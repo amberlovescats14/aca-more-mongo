@@ -27,8 +27,13 @@ router.delete('/:name', (req, res) => {
 
 // Create a route for getting ONE movie by it's id
 // This corresponds to item 4 in the controller
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
   return TicketsController.getById(req.params.id)
+  .then((result) => {
+    if(!result) throw new Error(`No result`)
+    res.json(result)
+  })
+  .catch(err => res.status(404).send(`ERROR`))
 })
 
 module.exports = router
