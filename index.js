@@ -3,7 +3,9 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const TicketRoutes = require('./express/routes/tickets')
 
-mongoose.connect(/* ADD CONNECTION STRING */)
+mongoose.connect('mongodb+srv://amber123:amber123@cluster1-pzepi.mongodb.net/test?retryWrites=true&w=majority')
+.then(()=> console.log('MONGO DB Connected'))
+.catch(err => console.log(err))
 
 const port = process.env.PORT || 4001
 const app = express()
